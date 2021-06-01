@@ -1,7 +1,11 @@
 # React Task Tracker
 
 >  Build a task tracker app with components, props, state, hooks, working with an API
- 
+
+## [Demo](http://react-task-tracker-ab.surge.sh)
+
+[![IMAGE ALT TEXT HERE](./uploads/screen.png)](https://nimb.ws/cbBpdn) 
+
 In the project directory, you can run:
 
 ### `npm start`
@@ -11,6 +15,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+## JSON-SERVER
+
+Run `npm run server` for run json-server. Navigate to `http://localhost:5000/`.
 
 ### `npm test`
 
