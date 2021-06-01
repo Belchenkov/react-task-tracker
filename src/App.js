@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './components/Header';
+import About from './components/About';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
+import Footer from './components/Footer';
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false);
@@ -66,24 +69,34 @@ function App() {
     };
 
     return (
-        <div className="container">
-            <Header
-                title="Task Tracker"
-                showAddForm={() => setShowAddTask(!showAddTask)}
-                showAdd={showAddTask}
-            />
-            { showAddTask && <AddTask onAddTask={addTask} /> }
-            { tasks.length > 0 ? (
-                    <Tasks
-                        onDelete={deleteTask}
-                        onToggle={toggleReminder}
-                        tasks={tasks}
-                    />
-                ) : (
-                    'No Tasks To Show'
-                )
-            }
-        </div>
+        <Router>
+
+            <div className="container">
+                <Header
+                    title="Task Tracker"
+                    showAddForm={() => setShowAddTask(!showAddTask)}
+                    showAdd={showAddTask}
+                />
+                { showAddTask && <AddTask onAddTask={addTask} /> }
+
+                <Route path='/' exact render={props => (
+                    <>
+                        { tasks.length > 0 ? (
+                                <Tasks
+                                    onDelete={deleteTask}
+                                    onToggle={toggleReminder}
+                                    tasks={tasks}
+                                />
+                            ) : (
+                                'No Tasks To Show'
+                            )
+                        }
+                    </>
+                )} />
+                <Route path='/about' component={About} />
+                <Footer />
+            </div>
+        </Router>
   );
 }
 
